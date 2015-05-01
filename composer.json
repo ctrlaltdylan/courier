@@ -9,7 +9,9 @@
     ],
     "minimum-stability": "dev",
     "require": {},
-    "psr-4": {
-        "Courier": "src/"
+    "autoload" : {
+        "psr-4": {
+            "Courier\\": "src/"
+        }
     }
 }
