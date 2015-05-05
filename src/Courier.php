@@ -47,12 +47,12 @@ class Courier
 	}
 
 	/**
-	 * @param $recipent
+	 * @param $recipient
 	 * @return Courier
 	 */
-	public function setRecipent($recipent)
+	public function setRecipient($recipient)
 	{
-		$this->message['recipent'] = $recipent;
+		$this->message['recipient'] = $recipient;
 
 		return $this;
 	}
@@ -74,7 +74,7 @@ class Courier
 	public function send()
 	{
 		$message = http_build_query([
-			'number' => $this->message['recipent'],
+			'number' => $this->message['recipient'],
 		    'message' => $this->message['body']
 		]);
 
