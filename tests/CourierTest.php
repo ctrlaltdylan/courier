@@ -94,3 +94,4 @@ class CourierTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expect, $property->getValue($this->courier)['sender']);
     }
 }
+
