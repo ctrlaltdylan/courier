@@ -93,5 +93,49 @@ class CourierTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($expect, $property->getValue($this->courier)['sender']);
     }
+
+    /**
+     * @test
+     *
+     * @covers Courier::__construct
+     */
+    public function constructorShouldInitializeDefaultOptions()
+    {
+        $expect = 'us';
+
+        $courier = new Courier();
+
+        $this->assertAttributeEquals(['region' => $expect], 'options', $courier);
+    }
+
+    /**
+     * @test
+     *
+     * @covers Courier::__construct
+     */
+    public function constructorShouldInitializeOptions()
+    {
+        $expect = 'canada';
+
+        $courier = new Courier([], ['region' => 'canada']);
+
+        $this->assertAttributeEquals(['region' => $expect], 'options', $courier);
+    }
+
+    /**
+     * @test
+     *
+     * @covers Courier::setRegion
+     */
+    public function setRegionShouldSetOption()
+    {
+        $expect = 'intl';
+
+        $courier = new Courier();
+
+        $courier->setRegion($expect);
+
+        $this->assertAttributeEquals(['region' => $expect], 'options', $courier);
+    }
 }
 
