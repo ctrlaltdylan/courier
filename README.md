@@ -1,13 +1,15 @@
 # Courier
-## A simple PHP Wrapper for Textbelt, a free SMS Provider
+A simple PHP Wrapper for Textbelt, a free SMS Provider
 
-### Installation
+## Installation
 
 Courier is a composer package. Install using:
 
 ```
 composer require ctrlaltdylan/courier
 ```
+
+## Usage
 
 Example:
 ````
@@ -27,3 +29,28 @@ $courier->setRecipient('1112223333')->setBody($body)->send()
 ````
 
 **Note:** Be sure to use `send()` before starting another message.
+
+### Options
+
+Options are passed into courier via the 2nd argument in the constructor.
+
+#### Regions
+
+Courier provides the Canadian and International support given by Textbelt in a few ways.
+
+
+Like through the constructor:
+```
+    $canadianCourier = new Courier\Courier(['body' => 'I <3 Vancouver'], ['region' => 'canada']);
+```
+
+Or with the `setRegion` method:
+```
+   $courier->setRegion('intl');
+```
+
+Supported regions:
+
+* `us` (default)
+* `canada`
+* `intl` (short for 'international')
