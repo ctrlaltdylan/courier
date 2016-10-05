@@ -2,13 +2,16 @@
 namespace Courier;
 
 /**
- * Service \ SMS \ TextBelt
+ * Courier
  *
  * @author <me@dylanjpierce.com>
  */
 
 class Courier
 {
+	/**
+	 * @var string
+	 */
 	const TEXTBELT_URL = 'http://textbelt.com/text';
 
 	/**
@@ -18,14 +21,19 @@ class Courier
 
 	/**
 	 * Constructor
+	 *
+	 * @param void
+	 * @return void
 	 */
-	public function __construct()
+	public function __construct($message = [])
 	{
 		$this->message = array();
 	}
 
 
 	/**
+	 * Make a new message
+	 * 
 	 * @return Courier
 	 */
 	public function make()
@@ -36,6 +44,8 @@ class Courier
 	}
 	
 	/**
+	 * Set sender
+	 * 
 	 * @param $sender
 	 * @return Courier
 	 */
@@ -47,6 +57,8 @@ class Courier
 	}
 
 	/**
+	 * Set Recipient
+	 *
 	 * @param $recipient
 	 * @return Courier
 	 */
@@ -58,6 +70,8 @@ class Courier
 	}
 
 	/**
+	 * Set Body
+	 * 
 	 * @param $body
 	 * @return Courier
 	 */
@@ -69,6 +83,8 @@ class Courier
 	}
 
 	/**
+	 * Send message
+	 * 
 	 * @return Courier
 	 */
 	public function send()
@@ -90,7 +106,7 @@ class Courier
 
 		curl_close ($ch);
 
-		$this->message = array();
+		$this->make();
 
 		return $this;
 	}

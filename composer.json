@@ -16,5 +16,8 @@
         "psr-4": {
             "Courier\\": "src/"
         }
+    },
+    "config-bin" : {
+        "bin-dir" : "bin"
     }
 }
