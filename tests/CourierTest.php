@@ -137,5 +137,22 @@ class CourierTest extends \PHPUnit_Framework_TestCase
 
         $this->assertAttributeEquals(['region' => $expect], 'options', $courier);
     }
+
+    /**
+     * @test
+     *
+     * @covers Courier::send()
+     */
+    public function sendShouldSetResponse()
+    {
+        $courier = new Courier();
+
+        $courier->setRecipient('3306144619');
+        $courier->setBody('Hello from Courier');
+
+        $response = $courier->send();
+        
+        $this->assertInstanceOf('GuzzleHttp\Psr7\Response', $response);
+    }
 }
 
