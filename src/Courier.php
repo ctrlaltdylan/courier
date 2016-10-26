@@ -26,6 +26,11 @@ class Courier
 	private $message;
 
 	/**
+	 * @var null | StreamResponse
+	 */
+	private $response;
+
+	/**
 	 * @var array 
 	 */
 	private $regions = [
@@ -61,7 +66,7 @@ class Courier
 	 * 
 	 * @return Courier
 	 */
-	public function make()
+	public function new()
 	{
 		$this->message = [];
 
@@ -121,21 +126,31 @@ class Courier
 	}
 
 	/**
+	 * Get Response
+	 *
+	 * @return null | Response
+	 */
+	public function getResponse()
+	{
+		return $this->response;
+	}
+
+	/**
 	 * Send message
 	 * 
 	 * @return Courier
 	 */
 	public function send()
 	{
-		$response = $this->guzzle->request('POST', $this->regions[$this->options['region']],  [
+		$this->response = $this->guzzle->request('POST', $this->regions[$this->options['region']],  [
 			'form_params' => [
 				'number' => $this->message['recipient'],
 			    'message' => $this->message['body']
 			],
 		]);
 
-		$this->make();
+		$this->new();
 
-		return $response;
+		return $this->response;
 	}
 }

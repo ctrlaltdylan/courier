@@ -24,11 +24,11 @@ You can also chain for multiple messages in one line.
 $body = "One hot body";
 
 $courier->setRecipient('1112223333')->setBody($body)->send()
-	->setRecipient('4445556666')->setBody($body)->send()
+	new()->setRecipient('4445556666')->setBody($body)->send()
 ;
 ````
 
-**Note:** Be sure to use `send()` before starting another message.
+**Note:** Be sure to use the `new()` function before starting another message.
 
 ### Options
 
